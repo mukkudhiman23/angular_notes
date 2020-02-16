@@ -1,0 +1,18 @@
+.form-control.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+button {
+  padding-bottom: 10px;
+}
+.main {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.cb {
+  margin-left: 10px;
+}
+.row {
+  background-image: url("https://jdpallas.com/wp-content/uploads/2015/02/JD-PALLAS-Website-Background-Image-Consulting-Team-Meeting.jpg");
+  background-size: cover;
+  min-height: 100vh;
+}

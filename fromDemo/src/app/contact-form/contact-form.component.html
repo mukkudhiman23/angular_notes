@@ -1,0 +1,175 @@
+<form #f="ngForm" (ngSubmit)="isSubmitted(f)">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="form-group col-sm-6 card main mt-4">
+      <h2>TDF Form Validation</h2>
+      <label for="email">Email:</label>
+      <input
+        required
+        ngModel
+        name="email"
+        type="email"
+        id="email"
+        #email="ngModel"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        class="form-control"
+        placeholder="ex:-abc@gmail.com"
+      /><br />
+      <div *ngIf="email.errors && email.touched">
+        <div *ngIf="email.errors.required" class="alert alert-danger">
+          Email is required
+        </div>
+        <div *ngIf="email.errors.pattern" class="alert alert-danger">
+          Email should be format
+        </div>
+      </div>
+      <hr />
+      <!--name-->
+      <label for="firstname">Name:</label>
+      <input
+        required
+        ngModel
+        name="firstname"
+        type="text"
+        id="firstname"
+        class="form-control"
+        minlength="3"
+        placeholder="Enter Your Full Name"
+        minlength="4"
+        #name="ngModel"
+      /><br />
+      <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+        <div *ngIf="name.errors.required">
+          First Name is required..
+        </div>
+        <div *ngIf="name.errors.minlength">
+          First Name should be greater than 3..
+        </div>
+      </div>
+      <hr />
+      <!--rollno-->
+      <label for="refno">Ref No:</label>
+      <input
+        required
+        ngModel
+        name="refno"
+        type="text"
+        id="rollno"
+        minlength="8"
+        pattern="[0-9]*"
+        class="form-control"
+        placeholder="Enter Your Reference Number"
+        #refno="ngModel"
+      />
+      <div class="alert alert-danger" *ngIf="refno.touched && !refno.valid">
+        <div *ngIf="refno.errors.required">
+          Reference no is required..
+        </div>
+        <div *ngIf="refno.errors.pattern">
+          Reference no should be number..
+        </div>
+        <div *ngIf="refno.errors.minlength">
+          Reference nol should be greater than 8..
+        </div>
+      </div>
+      <hr />
+
+      <!--checkbox-->
+
+      <!--dropdown-->
+
+      <label for="gender">Gender:</label>
+      <select
+        required
+        ngModel
+        id="gender"
+        name="gender"
+        class="form-control"
+        #gender="ngModel"
+      >
+        <option disabled>Select Gender</option>
+
+        <option value="male">Male</option>
+        <option value="female">Female</option> </select
+      ><br />
+      <div class="alert alert-danger" *ngIf="gender.touched && !gender.valid">
+        <div *ngIf="gender.errors.required">
+          Choose geneder..
+        </div>
+      </div>
+      <hr />
+      <!--radio button-->
+      <p>Food:</p>
+      <label>
+        <input
+          required
+          type="radio"
+          ngModel
+          name="food"
+          value="fast_food"
+          #rb="ngModel"
+        />
+        Fast Food
+      </label>
+      <label>
+        <input
+          required
+          type="radio"
+          ngModel
+          name="food"
+          value="home_food"
+          #rb="ngModel"
+        />
+        Home Made
+      </label>
+      <div class="alert alert-danger" *ngIf="rb.errors && rb.touched">
+        <div *ngIf="rb.errors.required">
+          Choose any food..
+        </div>
+      </div>
+      <br />
+      <hr />
+      <!--textarea-->
+      <label for="comment">Feedback</label>
+      <textarea
+        required
+        ngModel
+        name="comment"
+        id="comment"
+        cols="30"
+        rows="4"
+        class="form-control"
+        placeholder="Enter Your Feedback"
+        #cmt="ngModel"
+      ></textarea>
+
+      <div class="alert alert-danger" *ngIf="cmt.touched && !cmt.valid">
+        Comment is required ....
+      </div>
+      <br />
+      <hr />
+      <div class="checkbox">
+        <input
+          required
+          ngModel
+          name="accept"
+          type="checkbox"
+          id="accept"
+          #accept="ngModel"
+        />
+        <label>Accept Tearm & Conditions</label>
+        <div class="alert alert-danger" *ngIf="accept.touched && !accept.valid">
+          <div *ngIf="accept.errors.required">
+            Accept Team & Conditions Firstly..
+          </div>
+        </div>
+      </div>
+      <p>{{ f.value | json }}</p>
+      <button class="btn  btn-primary mt-4" [disabled]="!f.valid">
+        Submit
+      </button>
+    </div>
+
+    <div class="col-sm-3"></div>
+  </div>
+</form>
